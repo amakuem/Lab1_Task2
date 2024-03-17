@@ -40,6 +40,41 @@ private slots:
 
     void showSquare(double square);
 
+    void mUp();
+
+    void mDown();
+
+    void mLeft();
+
+    void mRight();
+
+    void rotateL();
+
+    void rotateR();
+
+    void on_pushButton_4_pressed();
+
+    void on_pushButton_4_released();
+
+    void on_pushButton_5_pressed();
+
+    void on_pushButton_5_released();
+
+    void on_pushButton_6_pressed();
+
+    void on_pushButton_6_released();
+
+    void on_pushButton_7_pressed();
+
+    void on_pushButton_7_released();
+
+    void on_pushButton_8_pressed();
+
+    void on_pushButton_8_released();
+
+    void on_pushButton_9_pressed();
+
+    void on_pushButton_9_released();
 
 private:
     base *basa;
@@ -48,6 +83,12 @@ private:
     rectungle *rectangle;
     QTimer *plus;
     QTimer *minus;
+    QTimer *up;
+    QTimer *down;
+    QTimer *left;
+    QTimer *right;
+    QTimer *rotateLef;
+    QTimer *rotateRig;
     int x;
     int y;
 };

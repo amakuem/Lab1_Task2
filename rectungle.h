@@ -16,7 +16,8 @@ public:
     void draw(QGraphicsScene *scene, int width, int height)override;
     void centerMasse(QGraphicsScene *scene, int width, int height)override;
     void perSquareMasse(int width, int height)override;
-    void getParametrs(int &side1, int &side2)override;
+    void getParametrs(int &side1, int &side2, int a) override;
+
 private:
 };
 
