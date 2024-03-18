@@ -5,7 +5,8 @@
 #include <QInputDialog>
 #include <QTimer>
 #include "rectungle.h"
-#include "base.h"
+//#include "base.h"
+#include "circle.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -76,11 +77,16 @@ private slots:
 
     void on_pushButton_9_released();
 
+    void on_pushButton_10_clicked();
+
+    void on_pushButton_11_clicked();
+
 private:
     base *basa;
     Ui::MainWindow *ui;
+    QGraphicsView *view;
     QGraphicsScene *scene;
-    rectungle *rectangle;
+    //rectungle *rectangle;
     QTimer *plus;
     QTimer *minus;
     QTimer *up;

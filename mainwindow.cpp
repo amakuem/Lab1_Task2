@@ -8,7 +8,8 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     scene = new QGraphicsScene(this);
-    rectangle = new rectungle();
+    //view = new QGraphicsView(this);
+    //rectangle = new rectungle();
     ui->graphicsView->setScene(scene);
     //connect(rectangle, &rectungle::sendPerimetr, this, &MainWindow::showPerimetr);
     //connect(rectangle, &rectungle::sendSquare, this, &MainWindow::showSquare);
@@ -56,7 +57,7 @@ void MainWindow::on_pushButton_clicked()
         basa = new rectungle();
         rectungle *rec = dynamic_cast<rectungle*>(basa);
             //rectangle = new rectungle();
-        bool ok;
+        //bool ok;
 
         int side;
         int a = 1;
@@ -76,6 +77,20 @@ void MainWindow::on_pushButton_clicked()
         ui->label_8->setText(QString::number(x));
         ui->label_10->setText(QString::number(y));
         //rectangle->
+    }
+    else if(ui->comboBox->currentText() == "Круг")
+    {
+        scene->clear();
+        //basa = new circle();
+        //circle *cir = dynamic_cast<circle*>(basa);
+        int radius;
+        int a = 0;
+        basa->getParametrs(radius, radius, a);
+        basa->draw(scene, radius, radius);
+
+        //connect(basa, &rectungle::sendPerimetr, this, &MainWindow::showPerimetr);
+        //connect(basa, &rectungle::sendSquare, this, &MainWindow::showSquare);
+
     }
 }
 
@@ -137,6 +152,8 @@ void MainWindow::on_pushButton_4_pressed()
 void MainWindow::mUp()
 {
     basa->up(scene, x ,y);
+    ui->label_8->setText(QString::number(x));
+    ui->label_10->setText(QString::number(y));
 }
 
 void MainWindow::on_pushButton_4_released()
@@ -154,6 +171,8 @@ void MainWindow::on_pushButton_5_pressed()
 void MainWindow::mDown()
 {
     basa->down(scene, x, y);
+    ui->label_8->setText(QString::number(x));
+    ui->label_10->setText(QString::number(y));
 }
 
 void MainWindow::on_pushButton_5_released()
@@ -171,12 +190,19 @@ void MainWindow::on_pushButton_6_pressed()
 
 void MainWindow::mLeft()
 {
-    basa->left(scene, x);
+    //basa->left(basa, scene, x, y);
+    //this->acceptDrops()
+
+    basa->left(scene, x, y);
+    ui->label_8->setText(QString::number(x));
+    ui->label_10->setText(QString::number(y));
+
 }
 
 void MainWindow::on_pushButton_6_released()
 {
     left->stop();
+
 }
 
 
@@ -190,6 +216,8 @@ void MainWindow::on_pushButton_7_pressed()
 void MainWindow::mRight()
 {
     basa->right(scene, x ,y);
+    ui->label_8->setText(QString::number(x));
+    ui->label_10->setText(QString::number(y));
 }
 
 void MainWindow::on_pushButton_7_released()
@@ -234,5 +262,19 @@ void MainWindow::rotateR()
 void MainWindow::on_pushButton_9_released()
 {
     rotateRig->stop();
+}
+
+
+void MainWindow::on_pushButton_10_clicked()
+{
+    basa->centerMasse(scene, x, y);
+    ui->label_8->setText(QString::number(x));
+    ui->label_10->setText(QString::number(y));
+}
+
+
+void MainWindow::on_pushButton_11_clicked()
+{
+    basa->moveToObject(ui->graphicsView, x, y);
 }
 

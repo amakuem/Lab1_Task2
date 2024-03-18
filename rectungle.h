@@ -14,7 +14,7 @@ class rectungle:public base
 public:
     rectungle();
     void draw(QGraphicsScene *scene, int width, int height)override;
-    void centerMasse(QGraphicsScene *scene, int width, int height)override;
+    //void centerMasse(QGraphicsScene *scene, int &x, int &y)override;
     void perSquareMasse(int width, int height)override;
     void getParametrs(int &side1, int &side2, int a) override;
 

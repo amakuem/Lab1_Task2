@@ -7,18 +7,13 @@ void rectungle::draw(QGraphicsScene *scene, int width, int height){
     QGraphicsRectItem *figure = new QGraphicsRectItem(0, 0, width, height);
     //setRect(0, 0, width, height);
     figure->setBrush(Qt::red);
-
-    //scene->addItem(this);
+    //figure->setTransformOriginPoint(figure->boundingRect().center());
+    scene->addItem(figure);
 
     QGraphicsEllipseItem *point = new QGraphicsEllipseItem(width/2 - 2.5, height/2 - 2.5, 3, 3);
     point->setBrush(Qt::blue);
-    //scene->addItem(point);
-    QGraphicsItemGroup *group = new QGraphicsItemGroup();
+    scene->addItem(point);
 
-    group->addToGroup(figure);
-    group->addToGroup(point);
-
-    scene->addItem(group);
 }
 
 void rectungle::perSquareMasse( int width, int height){
@@ -28,9 +23,9 @@ void rectungle::perSquareMasse( int width, int height){
     emit sendSquare(square);
 }
 
-void rectungle::centerMasse(QGraphicsScene *scene,int width, int height){
-
-}
+// void rectungle::centerMasse(QGraphicsScene *scene,int &x, int &y)
+// {
+// }
 
 void rectungle::getParametrs(int &side1, int &side2, int a){
     if (a == 0)
