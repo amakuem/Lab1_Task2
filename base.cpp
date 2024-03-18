@@ -2,6 +2,7 @@
 
 base::base() {}
 
+
 void base::centerMasse(QGraphicsScene *scene, int &x, int &y)
 {
     bool ok;

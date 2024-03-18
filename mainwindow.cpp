@@ -28,24 +28,20 @@ void MainWindow::on_pushButton_clicked()
     {
         scene->clear();
         basa = new rectungle();
-            //rectangle = new rectungle();
         rectungle *rec = dynamic_cast<rectungle*>(basa);
-        int width;// = QInputDialog::getInt(this, tr("Введите ширину"), tr("Ширина:"), 100, 0, 10000, 1, &ok);
-        int height;// = QInputDialog::getInt(this, tr("Введите длину"), tr("Длина:"), 200, 0, 10000, 1, &ok);
-            //rectangle->getParametrs(width, height);
+        int width;
+        int height;
+
         int a = 0;
-        //basa->getPara
+
 
         basa->getParametrs(width, height, a);
         basa->draw(scene, width, height);
-            //rectangle->draw(scene, width, height);
-            //rectangle->centerMasse(scene, width, height);
 
-            //connect(basa, *re)
         connect(basa, &rectungle::sendPerimetr, this, &MainWindow::showPerimetr);
         connect(basa, &rectungle::sendSquare, this, &MainWindow::showSquare);
         basa->perSquareMasse(width, height);
-        //rectangle->perSquareMasse(width, height);
+
         x = width/2;
         y = height/2;
         ui->label_8->setText(QString::number(x));
@@ -56,40 +52,44 @@ void MainWindow::on_pushButton_clicked()
         scene->clear();
         basa = new rectungle();
         rectungle *rec = dynamic_cast<rectungle*>(basa);
-            //rectangle = new rectungle();
-        //bool ok;
-
         int side;
         int a = 1;
         basa->getParametrs(side, side, a);
-            //int side = QInputDialog::getInt(this, tr("Введите длину стороны:"), tr("Сторона:"), 100, 0, 10000, 1, &ok);
         basa->draw(scene, side, side);
-            //rectangle->draw(scene, side, side);
-            //rectangle->centerMasse(scene, side, side);
 
         connect(basa, &rectungle::sendPerimetr, this, &MainWindow::showPerimetr);
         connect(basa, &rectungle::sendSquare, this, &MainWindow::showSquare);
 
         basa->perSquareMasse(side, side);
-            //rectangle->perSquareMasse(side, side);
+
         x = side/2;
         y = side/2;
         ui->label_8->setText(QString::number(x));
         ui->label_10->setText(QString::number(y));
-        //rectangle->
     }
     else if(ui->comboBox->currentText() == "Круг")
     {
         scene->clear();
-        //basa = new circle();
-        //circle *cir = dynamic_cast<circle*>(basa);
+        basa = new circle();
+        circle *cir = dynamic_cast<circle*>(basa);
         int radius;
         int a = 0;
         basa->getParametrs(radius, radius, a);
         basa->draw(scene, radius, radius);
 
-        //connect(basa, &rectungle::sendPerimetr, this, &MainWindow::showPerimetr);
-        //connect(basa, &rectungle::sendSquare, this, &MainWindow::showSquare);
+        connect(basa, &rectungle::sendPerimetr, this, &MainWindow::showPerimetr);
+        connect(basa, &rectungle::sendSquare, this, &MainWindow::showSquare);
+
+        basa->perSquareMasse(radius, radius);
+
+        x =radius;
+        y = radius;
+        ui->label_8->setText(QString::number(x));
+        ui->label_10->setText(QString::number(y));
+    }
+    else if(ui->comboBox->currentText() == "Треугольник")
+    {
+        scene->clear();
 
     }
 }

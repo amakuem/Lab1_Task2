@@ -10,12 +10,14 @@ CONFIG += c++17
 
 SOURCES += \
     base.cpp \
+    circle.cpp \
     main.cpp \
     mainwindow.cpp \
     rectungle.cpp
 
 HEADERS += \
     base.h \
+    circle.h \
     mainwindow.h \
     rectungle.h
 
