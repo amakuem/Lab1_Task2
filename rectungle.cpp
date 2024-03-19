@@ -3,7 +3,7 @@
 
 rectungle::rectungle() {}
 
-void rectungle::draw(QGraphicsScene *scene, int width, int height){
+void rectungle::draw(QGraphicsScene *scene, int width, int height, int a){
     QGraphicsRectItem *figure = new QGraphicsRectItem(0, 0, width, height);
     //setRect(0, 0, width, height);
     figure->setBrush(Qt::red);
@@ -16,7 +16,7 @@ void rectungle::draw(QGraphicsScene *scene, int width, int height){
 
 }
 
-void rectungle::perSquareMasse( int width, int height){
+void rectungle::perSquareMasse( int width, int height, int a){
     double perimetr = (width + height) * 2;
     double square = width *height;
     emit sendPerimetr(perimetr);
@@ -27,7 +27,7 @@ void rectungle::perSquareMasse( int width, int height){
 // {
 // }
 
-void rectungle::getParametrs(int &side1, int &side2, int a){
+void rectungle::getParametrs(int &side1, int &side2, int &side3, int a){
     if (a == 0)
     {
         bool ok;

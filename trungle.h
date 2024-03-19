@@ -1,17 +1,17 @@
-#ifndef CIRCLE_H
-#define CIRCLE_H
+#ifndef TRUNGLE_H
+#define TRUNGLE_H
 
 #include "base.h"
-#include <QGraphicsEllipseItem>
-#include <QGraphicsLineItem>
+#include <QMessageBox>
 
-class circle: public base
+class trungle: public base
 {
 public:
-    //circle();
+    trungle();
     void draw(QGraphicsScene *scene, int width, int height, int a)override;
     void getParametrs(int &side1, int &side2, int &side3, int a) override;
     void perSquareMasse(int width, int height, int a)override;
+    bool proverka(int side1, int side2, int side3);
 };
 
-#endif // CIRCLE_H
+#endif // TRUNGLE_H

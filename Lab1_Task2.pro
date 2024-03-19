@@ -13,13 +13,15 @@ SOURCES += \
     circle.cpp \
     main.cpp \
     mainwindow.cpp \
-    rectungle.cpp
+    rectungle.cpp \
+    trungle.cpp
 
 HEADERS += \
     base.h \
     circle.h \
     mainwindow.h \
-    rectungle.h
+    rectungle.h \
+    trungle.h
 
 FORMS += \
     mainwindow.ui

@@ -7,6 +7,7 @@
 #include "rectungle.h"
 //#include "base.h"
 #include "circle.h"
+#include "trungle.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -97,5 +98,6 @@ private:
     QTimer *rotateRig;
     int x;
     int y;
+    int abss;
 };
 #endif // MAINWINDOW_H

@@ -53,17 +53,28 @@ void base::right(QGraphicsScene *scene, int &x, int &y)
     }
 }
 
-void base::rotateLeft(QGraphicsScene *scene, int x, int y)
+void base::rotateLeft(QGraphicsScene *scene, int x, int y, int a)
 {
-    QList<QGraphicsItem*> items = scene->items();
-
-    for(QGraphicsItem* item : items) {
-        item->setTransformOriginPoint(item->boundingRect().center());
-        item->setRotation(item->rotation()-3);
+    if(a == 0)
+    {
+        QList<QGraphicsItem*> items = scene->items();
+        for(QGraphicsItem* item : items) {
+            item->setTransformOriginPoint(item->boundingRect().center());
+            item->setRotation(item->rotation()-3);
+        }
     }
+    else if(a == 1)
+    {
+        QList<QGraphicsItem*> items = scene->items();
+        for(QGraphicsItem* item : items) {
+            item->setTransformOriginPoint(x, y);
+            item->setRotation(item->rotation()-3);
+        }
+    }
+
 }
 
-void base::rotateRight(QGraphicsScene *scene, int x, int y)
+void base::rotateRight(QGraphicsScene *scene, int x, int y, int a)
 {
     QList<QGraphicsItem*> items = scene->items();
     for(QGraphicsItem* item : items) {

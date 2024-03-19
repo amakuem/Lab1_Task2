@@ -34,13 +34,14 @@ void MainWindow::on_pushButton_clicked()
 
         int a = 0;
 
+        abss = 0;
 
-        basa->getParametrs(width, height, a);
-        basa->draw(scene, width, height);
+        basa->getParametrs(width, height, width, a);
+        basa->draw(scene, width, height, a);
 
         connect(basa, &rectungle::sendPerimetr, this, &MainWindow::showPerimetr);
         connect(basa, &rectungle::sendSquare, this, &MainWindow::showSquare);
-        basa->perSquareMasse(width, height);
+        basa->perSquareMasse(width, height, width);
 
         x = width/2;
         y = height/2;
@@ -54,13 +55,14 @@ void MainWindow::on_pushButton_clicked()
         rectungle *rec = dynamic_cast<rectungle*>(basa);
         int side;
         int a = 1;
-        basa->getParametrs(side, side, a);
-        basa->draw(scene, side, side);
+        abss = 0;
+        basa->getParametrs(side, side, side, a);
+        basa->draw(scene, side, side, a);
 
         connect(basa, &rectungle::sendPerimetr, this, &MainWindow::showPerimetr);
         connect(basa, &rectungle::sendSquare, this, &MainWindow::showSquare);
 
-        basa->perSquareMasse(side, side);
+        basa->perSquareMasse(side, side, side);
 
         x = side/2;
         y = side/2;
@@ -74,13 +76,14 @@ void MainWindow::on_pushButton_clicked()
         circle *cir = dynamic_cast<circle*>(basa);
         int radius;
         int a = 0;
-        basa->getParametrs(radius, radius, a);
-        basa->draw(scene, radius, radius);
+        abss = 0;
+        basa->getParametrs(radius, radius, radius, a);
+        basa->draw(scene, radius, radius, a);
 
         connect(basa, &rectungle::sendPerimetr, this, &MainWindow::showPerimetr);
         connect(basa, &rectungle::sendSquare, this, &MainWindow::showSquare);
 
-        basa->perSquareMasse(radius, radius);
+        basa->perSquareMasse(radius, radius, radius);
 
         x =radius;
         y = radius;
@@ -90,7 +93,27 @@ void MainWindow::on_pushButton_clicked()
     else if(ui->comboBox->currentText() == "Треугольник")
     {
         scene->clear();
+        basa = new trungle();
+        trungle *trun = dynamic_cast<trungle*>(basa);
+        int side1;
+        int side2;
+        int side3;
+        int a;
+        abss = 1;
+        basa->getParametrs(side1, side2, side3, a);
 
+        basa->draw(scene, side1, side2, side3);
+
+
+        connect(basa, &rectungle::sendPerimetr, this, &MainWindow::showPerimetr);
+        connect(basa, &rectungle::sendSquare, this, &MainWindow::showSquare);
+
+        basa->perSquareMasse(side1, side2, side3);
+
+        x = (0 + side1 + (side2*side2 - side3*side3 + side1*side1) / (2*side1)) / 3.0;
+        y = (0 + 0 + sqrt(side2*side2 - ((side2*side2 - side3*side3 + side1*side1) / (2*side1)) * ((side2*side2 - side3*side3 + side1*side1) / (2*side1)))) / 3.0;
+        ui->label_8->setText(QString::number(x));
+        ui->label_10->setText(QString::number(y));
     }
 }
 
@@ -236,7 +259,8 @@ void MainWindow::on_pushButton_8_pressed()
 
 void MainWindow::rotateL()
 {
-    basa->rotateLeft(scene, x, y);
+
+    basa->rotateLeft(scene, x, y, abss);
 }
 
 void MainWindow::on_pushButton_8_released()
@@ -255,7 +279,7 @@ void MainWindow::on_pushButton_9_pressed()
 
 void MainWindow::rotateR()
 {
-    basa->rotateRight(scene, x, y);
+    basa->rotateRight(scene, x, y, abss);
 }
 
 
