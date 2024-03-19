@@ -2,7 +2,7 @@
 
 //circle::circle(){}
 
-void circle::draw(QGraphicsScene *scene, int width, int height, int a)
+void circle::draw(QGraphicsScene *scene, int width, int height, int a, int &h)
 {
     QGraphicsEllipseItem *figure = new QGraphicsEllipseItem(0, 0, width * 2, width * 2);
     scene->addItem(figure);

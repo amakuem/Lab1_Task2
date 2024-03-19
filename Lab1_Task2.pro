@@ -14,6 +14,7 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     rectungle.cpp \
+    romb.cpp \
     trungle.cpp
 
 HEADERS += \
@@ -21,6 +22,7 @@ HEADERS += \
     circle.h \
     mainwindow.h \
     rectungle.h \
+    romb.h \
     trungle.h
 
 FORMS += \

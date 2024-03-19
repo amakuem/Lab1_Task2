@@ -1,17 +1,16 @@
-#ifndef CIRCLE_H
-#define CIRCLE_H
+#ifndef ROMB_H
+#define ROMB_H
 
 #include "base.h"
-#include <QGraphicsEllipseItem>
-#include <QGraphicsLineItem>
 
-class circle: public base
+class romb: public base
 {
 public:
-    //circle();
+    romb();
     void draw(QGraphicsScene *scene, int width, int height, int a, int &h)override;
     void getParametrs(int &side1, int &side2, int &side3, int a) override;
     void perSquareMasse(int width, int height, int a)override;
+    bool proverka(int side1, int side2, int side3);
 };
 
-#endif // CIRCLE_H
+#endif // ROMB_H

@@ -8,6 +8,7 @@
 //#include "base.h"
 #include "circle.h"
 #include "trungle.h"
+#include "romb.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {

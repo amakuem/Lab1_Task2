@@ -2,7 +2,7 @@
 
 trungle::trungle() {}
 
-void trungle::draw(QGraphicsScene *scene, int width, int height, int a)
+void trungle::draw(QGraphicsScene *scene, int width, int height, int a, int &h)
 {
     if(proverka(width, height, a))
     {

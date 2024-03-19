@@ -20,7 +20,7 @@
         Q_OBJECT
     public:
         base();
-        virtual void draw(QGraphicsScene *scene, int width, int height, int a) = 0;
+        virtual void draw(QGraphicsScene *scene, int width, int height, int a, int &h) = 0;
 
         virtual void perSquareMasse(int width, int height, int a) = 0;
         virtual void getParametrs(int &side1, int &side2, int &side3, int a) = 0;

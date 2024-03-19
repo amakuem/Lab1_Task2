@@ -37,7 +37,7 @@ void MainWindow::on_pushButton_clicked()
         abss = 0;
 
         basa->getParametrs(width, height, width, a);
-        basa->draw(scene, width, height, a);
+        basa->draw(scene, width, height, a, abss);
 
         connect(basa, &rectungle::sendPerimetr, this, &MainWindow::showPerimetr);
         connect(basa, &rectungle::sendSquare, this, &MainWindow::showSquare);
@@ -57,7 +57,7 @@ void MainWindow::on_pushButton_clicked()
         int a = 1;
         abss = 0;
         basa->getParametrs(side, side, side, a);
-        basa->draw(scene, side, side, a);
+        basa->draw(scene, side, side, a, abss);
 
         connect(basa, &rectungle::sendPerimetr, this, &MainWindow::showPerimetr);
         connect(basa, &rectungle::sendSquare, this, &MainWindow::showSquare);
@@ -78,7 +78,7 @@ void MainWindow::on_pushButton_clicked()
         int a = 0;
         abss = 0;
         basa->getParametrs(radius, radius, radius, a);
-        basa->draw(scene, radius, radius, a);
+        basa->draw(scene, radius, radius, a, abss);
 
         connect(basa, &rectungle::sendPerimetr, this, &MainWindow::showPerimetr);
         connect(basa, &rectungle::sendSquare, this, &MainWindow::showSquare);
@@ -102,7 +102,7 @@ void MainWindow::on_pushButton_clicked()
         abss = 1;
         basa->getParametrs(side1, side2, side3, a);
 
-        basa->draw(scene, side1, side2, side3);
+        basa->draw(scene, side1, side2, side3, abss);
 
 
         connect(basa, &rectungle::sendPerimetr, this, &MainWindow::showPerimetr);
@@ -112,6 +112,30 @@ void MainWindow::on_pushButton_clicked()
 
         x = (0 + side1 + (side2*side2 - side3*side3 + side1*side1) / (2*side1)) / 3.0;
         y = (0 + 0 + sqrt(side2*side2 - ((side2*side2 - side3*side3 + side1*side1) / (2*side1)) * ((side2*side2 - side3*side3 + side1*side1) / (2*side1)))) / 3.0;
+        ui->label_8->setText(QString::number(x));
+        ui->label_10->setText(QString::number(y));
+    }
+    else if(ui->comboBox->currentText() == "Ромб")
+    {
+        scene->clear();
+        basa = new romb();
+        romb *rom = dynamic_cast<romb*>(basa);
+        int side1;
+        int height;
+        int a;
+        abss = 0;
+        basa->getParametrs(side1, side1, side1, a);
+
+        basa->draw(scene, side1, side1, side1, height);
+
+
+        connect(basa, &rectungle::sendPerimetr, this, &MainWindow::showPerimetr);
+        connect(basa, &rectungle::sendSquare, this, &MainWindow::showSquare);
+
+        basa->perSquareMasse(side1, height, a);
+
+        x = (0 + side1 + 2*side1 + side1) / 4.0;
+        y = (height/2 + 0 + height/2 + height) / 4.0;
         ui->label_8->setText(QString::number(x));
         ui->label_10->setText(QString::number(y));
     }
