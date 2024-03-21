@@ -7,6 +7,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    status = false;
     scene = new QGraphicsScene(this);
     //view = new QGraphicsView(this);
     //rectangle = new rectungle();
@@ -31,12 +32,18 @@ void MainWindow::on_pushButton_clicked()
         rectungle *rec = dynamic_cast<rectungle*>(basa);
         int width;
         int height;
+        bool ok;
+        status = true;
 
         int a = 0;
 
         abss = 0;
 
-        basa->getParametrs(width, height, width, a);
+        basa->getParametrs(width, height, width, a, ok);
+        if(!ok)
+        {
+            return ;
+        }
         basa->draw(scene, width, height, a, abss);
 
         connect(basa, &rectungle::sendPerimetr, this, &MainWindow::showPerimetr);
@@ -55,8 +62,14 @@ void MainWindow::on_pushButton_clicked()
         rectungle *rec = dynamic_cast<rectungle*>(basa);
         int side;
         int a = 1;
+        bool ok;
+        status = true;
         abss = 0;
-        basa->getParametrs(side, side, side, a);
+        basa->getParametrs(side, side, side, a, ok);
+        if(!ok)
+        {
+            return ;
+        }
         basa->draw(scene, side, side, a, abss);
 
         connect(basa, &rectungle::sendPerimetr, this, &MainWindow::showPerimetr);
@@ -76,8 +89,15 @@ void MainWindow::on_pushButton_clicked()
         circle *cir = dynamic_cast<circle*>(basa);
         int radius;
         int a = 0;
+        bool ok;
+        status = true;
+
         abss = 0;
-        basa->getParametrs(radius, radius, radius, a);
+        basa->getParametrs(radius, radius, radius, a, ok);
+        if(!ok)
+        {
+            return ;
+        }
         basa->draw(scene, radius, radius, a, abss);
 
         connect(basa, &rectungle::sendPerimetr, this, &MainWindow::showPerimetr);
@@ -99,9 +119,14 @@ void MainWindow::on_pushButton_clicked()
         int side2;
         int side3;
         int a;
-        abss = 1;
-        basa->getParametrs(side1, side2, side3, a);
-
+        status = true;
+        bool ok;
+        abss = 0;
+        basa->getParametrs(side1, side2, side3, a, ok);
+        if(!ok)
+        {
+            return ;
+        }
         basa->draw(scene, side1, side2, side3, abss);
 
 
@@ -122,10 +147,15 @@ void MainWindow::on_pushButton_clicked()
         romb *rom = dynamic_cast<romb*>(basa);
         int side1;
         int height;
-        int a;
+        int a = 0;
         abss = 0;
-        basa->getParametrs(side1, side1, side1, a);
-
+        bool ok;
+        status = true;
+        basa->getParametrs(side1, side1, side1, a, ok);
+        if(!ok)
+        {
+            return ;
+        }
         basa->draw(scene, side1, side1, side1, height);
 
 
@@ -136,6 +166,127 @@ void MainWindow::on_pushButton_clicked()
 
         x = (0 + side1 + 2*side1 + side1) / 4.0;
         y = (height/2 + 0 + height/2 + height) / 4.0;
+        ui->label_8->setText(QString::number(x));
+        ui->label_10->setText(QString::number(y));
+    }
+    else if(ui->comboBox->currentText() == "Шестиугольник")
+    {
+        scene->clear();
+        basa = new hexagon();
+        hexagon *hex = dynamic_cast<hexagon*>(basa);
+        int side1;
+        int height;
+        int a = 0;
+        status = true;
+        bool ok;
+        abss = 0;
+        basa->getParametrs(side1, side1, side1, a, ok);
+        if(!ok)
+        {
+            return ;
+        }
+        basa->draw(scene, side1, side1, side1, height);
+
+
+        connect(basa, &rectungle::sendPerimetr, this, &MainWindow::showPerimetr);
+        connect(basa, &rectungle::sendSquare, this, &MainWindow::showSquare);
+
+        basa->perSquareMasse(side1, height, a);
+
+        x = basa->boundingRect().center().x();
+        y = basa->boundingRect().center().y();
+        ui->label_8->setText(QString::number(x));
+        ui->label_10->setText(QString::number(y));
+    }
+    else if(ui->comboBox->currentText() == "Звезда(5)")
+    {
+        scene->clear();
+        basa = new starFive();
+        starFive *star = dynamic_cast<starFive*>(basa);
+        int radius;
+        int height;
+        int a;
+        bool ok;
+        status = true;
+        abss = 0;
+        basa->getParametrs(radius, radius, radius, a, ok);
+        if(!ok)
+        {
+            return ;
+        }
+        basa->draw(scene, radius, radius, height, a);
+
+
+        connect(basa, &rectungle::sendPerimetr, this, &MainWindow::showPerimetr);
+        connect(basa, &rectungle::sendSquare, this, &MainWindow::showSquare);
+
+        int ang = 5;
+        basa->perSquareMasse(radius, height, ang);
+
+        x = height;
+        y = a;
+        // x = basa->boundingRect().center().x();
+        // y = basa->boundingRect().center().y();
+        ui->label_8->setText(QString::number(x));
+        ui->label_10->setText(QString::number(y));
+    }
+    else if(ui->comboBox->currentText() == "Звезда(6)")
+    {
+        scene->clear();
+        basa = new starSix();
+        starSix *star = dynamic_cast<starSix*>(basa);
+        int radius;
+        int height;
+        int a = 6;
+        bool ok;
+        status = true;
+        abss = 0;
+        basa->getParametrs(radius, radius, radius, a, ok);
+        if(!ok)
+        {
+            return ;
+        }
+        basa->draw(scene, radius, radius, radius, height);
+
+
+        connect(basa, &rectungle::sendPerimetr, this, &MainWindow::showPerimetr);
+        connect(basa, &rectungle::sendSquare, this, &MainWindow::showSquare);
+
+        basa->perSquareMasse(radius, height, a);
+
+        x = basa->boundingRect().center().x();
+        y = basa->boundingRect().center().y();
+        ui->label_8->setText(QString::number(x));
+        ui->label_10->setText(QString::number(y));
+    }
+    else if(ui->comboBox->currentText() == "Звезда(8)")
+    {
+        scene->clear();
+        basa = new starEight();
+        starEight *star = dynamic_cast<starEight*>(basa);
+        int radius;
+        int height;
+        int a = 8;
+        bool ok;
+        status = true;
+        abss = 0;
+        basa->getParametrs(radius, radius, radius, a, ok);
+        if(!ok)
+        {
+            return ;
+        }
+        basa->draw(scene, radius, radius, radius, height);
+
+
+        connect(basa, &rectungle::sendPerimetr, this, &MainWindow::showPerimetr);
+        connect(basa, &rectungle::sendSquare, this, &MainWindow::showSquare);
+
+        basa->perSquareMasse(radius, height, a);
+
+        // x =
+        // y =
+        x = basa->boundingRect().center().x();
+        y = basa->boundingRect().center().y();
         ui->label_8->setText(QString::number(x));
         ui->label_10->setText(QString::number(y));
     }
@@ -198,14 +349,23 @@ void MainWindow::on_pushButton_4_pressed()
 
 void MainWindow::mUp()
 {
-    basa->up(scene, x ,y);
-    ui->label_8->setText(QString::number(x));
-    ui->label_10->setText(QString::number(y));
+    if(status)
+    {
+        basa->up(scene, x ,y);
+        ui->label_8->setText(QString::number(x));
+        ui->label_10->setText(QString::number(y));
+    }
+
 }
 
 void MainWindow::on_pushButton_4_released()
 {
-    up->stop();
+    if(status)
+    {
+        up->stop();
+        y -= 3;
+    }
+
 }
 
 void MainWindow::on_pushButton_5_pressed()
@@ -217,14 +377,23 @@ void MainWindow::on_pushButton_5_pressed()
 
 void MainWindow::mDown()
 {
-    basa->down(scene, x, y);
-    ui->label_8->setText(QString::number(x));
-    ui->label_10->setText(QString::number(y));
+    if(status)
+    {
+        basa->down(scene, x, y);
+        ui->label_8->setText(QString::number(x));
+        ui->label_10->setText(QString::number(y));
+    }
+
 }
 
 void MainWindow::on_pushButton_5_released()
 {
-    down->stop();
+    if(status)
+    {
+        down->stop();
+        y += 3;
+    }
+
 }
 
 
@@ -237,18 +406,23 @@ void MainWindow::on_pushButton_6_pressed()
 
 void MainWindow::mLeft()
 {
-    //basa->left(basa, scene, x, y);
-    //this->acceptDrops()
+    if(status)
+    {
+        basa->left(scene, x, y);
+        ui->label_8->setText(QString::number(x));
+        ui->label_10->setText(QString::number(y));
+    }
 
-    basa->left(scene, x, y);
-    ui->label_8->setText(QString::number(x));
-    ui->label_10->setText(QString::number(y));
 
 }
 
 void MainWindow::on_pushButton_6_released()
 {
-    left->stop();
+    if(status)
+    {
+        left->stop();
+        x -= 3;
+    }
 
 }
 
@@ -262,14 +436,23 @@ void MainWindow::on_pushButton_7_pressed()
 
 void MainWindow::mRight()
 {
-    basa->right(scene, x ,y);
-    ui->label_8->setText(QString::number(x));
-    ui->label_10->setText(QString::number(y));
+    if(status)
+    {
+        basa->right(scene, x ,y);
+        ui->label_8->setText(QString::number(x));
+        ui->label_10->setText(QString::number(y));
+    }
+
 }
 
 void MainWindow::on_pushButton_7_released()
 {
-    right->stop();
+    if(status)
+    {
+        right->stop();
+        x += 3;
+    }
+
 }
 
 
@@ -315,9 +498,13 @@ void MainWindow::on_pushButton_9_released()
 
 void MainWindow::on_pushButton_10_clicked()
 {
-    basa->centerMasse(scene, x, y);
-    ui->label_8->setText(QString::number(x));
-    ui->label_10->setText(QString::number(y));
+    if(status)
+    {
+        basa->centerMasse(scene, x, y);
+        ui->label_8->setText(QString::number(x));
+        ui->label_10->setText(QString::number(y));
+    }
+
 }
 
 

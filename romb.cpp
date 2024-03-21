@@ -2,7 +2,7 @@
 
 romb::romb() {}
 
-void romb::draw(QGraphicsScene *scene, int width, int height, int a, int &h)
+void romb::draw(QGraphicsScene *scene, int width, int height, int &a, int &h)
 {
     h = sqrt(3) * width;
     QPointF p1(0, h / 2);
@@ -18,9 +18,9 @@ void romb::draw(QGraphicsScene *scene, int width, int height, int a, int &h)
     scene->addItem(figure);
 }
 
-void romb::getParametrs(int &side1, int &side2, int &side3, int a)
+void romb::getParametrs(int &side1, int &side2, int &side3, int a, bool &ok)
 {
-    bool ok;
+    ok;
     side1 = QInputDialog::getInt(this, tr("Введите стороны ромба"), tr("Сторона:"), 100, 0, 10000, 1, &ok);
 }
 

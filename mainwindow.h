@@ -9,6 +9,10 @@
 #include "circle.h"
 #include "trungle.h"
 #include "romb.h"
+#include "hexagon.h"
+#include "starfive.h"
+#include "starsix.h"
+#include "stareight.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -100,5 +104,6 @@ private:
     int x;
     int y;
     int abss;
+    int status;
 };
 #endif // MAINWINDOW_H

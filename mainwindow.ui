@@ -71,6 +71,26 @@
       <string>Ромб</string>
      </property>
     </item>
+    <item>
+     <property name="text">
+      <string>Шестиугольник</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Звезда(5)</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Звезда(6)</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Звезда(8)</string>
+     </property>
+    </item>
    </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">

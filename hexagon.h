@@ -1,17 +1,15 @@
-#ifndef TRUNGLE_H
-#define TRUNGLE_H
+#ifndef HEXAGON_H
+#define HEXAGON_H
 
 #include "base.h"
-#include <QMessageBox>
 
-class trungle: public base
+class hexagon: public base
 {
 public:
-    trungle();
+    hexagon();
     void draw(QGraphicsScene *scene, int width, int height, int &a, int &h)override;
     void getParametrs(int &side1, int &side2, int &side3, int a, bool &ok) override;
     void perSquareMasse(int width, int height, int a)override;
-    bool proverka(int side1, int side2, int side3);
 };
 
-#endif // TRUNGLE_H
+#endif // HEXAGON_H

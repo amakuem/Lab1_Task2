@@ -11,18 +11,26 @@ CONFIG += c++17
 SOURCES += \
     base.cpp \
     circle.cpp \
+    hexagon.cpp \
     main.cpp \
     mainwindow.cpp \
     rectungle.cpp \
     romb.cpp \
+    stareight.cpp \
+    starfive.cpp \
+    starsix.cpp \
     trungle.cpp
 
 HEADERS += \
     base.h \
     circle.h \
+    hexagon.h \
     mainwindow.h \
     rectungle.h \
     romb.h \
+    stareight.h \
+    starfive.h \
+    starsix.h \
     trungle.h
 
 FORMS += \

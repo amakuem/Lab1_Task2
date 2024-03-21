@@ -2,7 +2,7 @@
 
 trungle::trungle() {}
 
-void trungle::draw(QGraphicsScene *scene, int width, int height, int a, int &h)
+void trungle::draw(QGraphicsScene *scene, int width, int height, int &a, int &h)
 {
     if(proverka(width, height, a))
     {
@@ -13,19 +13,19 @@ void trungle::draw(QGraphicsScene *scene, int width, int height, int a, int &h)
     QPointF p2(width, 0);
     QPointF p3((height*height - a*a + width*width) / (2*width), sqrt(height*height - ((height*height - a*a + width*width) / (2*width)) * ((height*height - a*a + width*width) / (2*width))));
 
-    int x =(0 + width + (height*height - a*a + width*width) / (2*width)) / 3.0;
-    int y = (0 + 0 + sqrt(height*height - ((height*height - a*a + width*width) / (2*width)) * ((height*height - a*a + width*width) / (2*width)))) / 3.0;
+    //int x =(0 + width + (height*height - a*a + width*width) / (2*width)) / 3.0;
+    //int y = (0 + 0 + sqrt(height*height - ((height*height - a*a + width*width) / (2*width)) * ((height*height - a*a + width*width) / (2*width)))) / 3.0;
     QPolygonF triangle;
     triangle << p1 << p2 << p3;
     QGraphicsPolygonItem *figure = new QGraphicsPolygonItem(triangle);
-    QGraphicsEllipseItem *point = new QGraphicsEllipseItem(x, y, 3, 3);
-    scene->addItem(point);
+    // QGraphicsEllipseItem *point = new QGraphicsEllipseItem(x, y, 3, 3);
+    // scene->addItem(point);
     scene->addItem(figure);
 }
 
-void trungle::getParametrs(int &side1, int &side2, int &side3, int a)
+void trungle::getParametrs(int &side1, int &side2, int &side3, int a, bool &ok)
 {
-    bool ok;
+    ok;
     side1 = QInputDialog::getInt(this, tr("Введите стороны треугольника"), tr("Сторона 1:"), 100, 0, 10000, 1, &ok);
     side2 = QInputDialog::getInt(this, tr("Введите стороны треугольника"), tr("Сторона 2:"), 100, 0, 10000, 1, &ok);
     side3 = QInputDialog::getInt(this, tr("Введите стороны треугольника"), tr("Сторона 3:"), 100, 0, 10000, 1, &ok);
